@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammer clone</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .container{
+            width: 600px;
+            padding:30px;
+            margin-top: 20px;
+        }
+        textarea{
+            width: 100%;
+            height: 130px;
+            padding: 10px;
+            margin: 10px;
+            position: relative;
+            resize: none;
+            font-size: larger;
+        }
+        button{
+            padding: 10px 30px;
+            border: none;
+            letter-spacing: 1.3px;
+            color: whitesmoke;
+            font-size: larger;
+            background-color: blueviolet;
+            position: relative;
+            margin: auto;
+            display: flex;
+            margin-top: -70px;
+            cursor: pointer;
+       
+
+        }
+        .container-text{
+            margin-top: 30px;
+
+            justify-content: space-between;
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Real Time Character counter</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem suscipit, nostrum ullam quibusdam <br>
+             eos officia maiores, illo autem, voluptatibus officiis vero ipsam provident inventore eaque dolor. Dignissimos veniam assumenda tempora!</p>
+             <textarea name="textname" id="textname" placeholder="please sub" maxlength="150" ></textarea>
+             <button onclick="copytext();">Copy Text</button>
+     <div class="container-text">
+        <p>Total character :<span id="previoustext">0</span></p>
+        <p>Remaining :<span id="nexttext">150</span></p>
+     </div>
+    </div>
+
+
+    <script>
+        const charvalue=document.getElementById('textname')
+        let previoustexts=document.getElementById('previoustext')
+        let nexttexts=document.getElementById('nexttext')
+
+        charvalue.addEventListener('keyup',()=>{
+        username=charvalue.value.length
+        previoustexts.innerText=username
+
+        nexttexts.innerText=150-username
+        })
+        function copytext(){
+            charvalue.select();
+            charvalue.setSelectionrange();
+            navigator.clipboard.writeText(charvalue.value);
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+       }
+       body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+       }
+       .clock{
+        width: 250px;
+        height: 250px;
+        background-color: rgb(119, 190, 190);
+        border-radius: 50%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid red;
+        box-shadow: inset 0 0 10px 0 red;
+       }
+       span{
+        display:inline-block;
+       }
+       .num{
+        position: absolute;
+        height: 100px;
+       }
+       .dot{
+        width: 10px;
+        height: 10px;
+        background-color: yellow;
+        border-radius: 50%;
+        border: 1px solid red;
+        z-index: 10;
+       }
+       .num span{
+        /* width: 13px;
+        height: 32px; */
+        line-height: 30px;
+       }
+       .num {
+        position: absolute;
+       height: 100%;
+
+       }
+       .num1{
+        transform: rotate(30deg);
+       }
+       .num2{
+        transform: rotate(60deg);
+       }
+      
+       .num2{
+        transform: rotate(60deg);
+       }
+       .num2 span{
+    
+         transform: rotate(-60deg);
+        } 
+       .num3{
+        transform: rotate(90deg);
+       }
+       .num3 span{
+    
+    transform: rotate(-90deg);
+   } 
+       .num4{
+        transform: rotate(120deg);
+       }
+       .num5{
+        transform: rotate(150deg);
+       }
+       .num6{
+        transform: rotate(180deg);
+       }
+       .num7{
+        transform: rotate(210deg);
+       }
+       .num8{
+        transform: rotate(240deg);
+       }
+       .num9{
+        transform: rotate(270deg);
+       }
+       .num10{
+        transform: rotate(300deg);
+       }
+       .num11{
+        transform: rotate(330deg);
+       }
+       .num12{
+        transform: rotate(360deg);
+       }
+       .sec{
+        width: 2px;
+        height:50%;
+        background-color: black;
+        position: absolute;
+        top: 10%;
+        transform-origin: 50% 80%;
+        border-radius: 100% 100% 0 0;
+       }
+       .min{
+        width: 2px; 
+        background-color: rgb(204, 11, 11);
+        position: absolute;
+        top: 17%;
+        height: 40%;
+        border-radius: 100% 100% 0 0;
+        transform-origin: 50% 80%;
+        transform: rotate(30deg);
+       }
+       .hr{
+        width: 2px;
+        background-color: rgb(175, 229, 13);
+        position: absolute;
+        top: 30%;
+        height:30%;
+        border-radius: 100% 100% 0 0;
+        transform-origin: 50% 68%;
+        transform: rotate(60deg);
+       }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="dot"></div>
+        <div class=" num num1"><span>1</span></div>
+        <div class="num num2"><span>2</span></div>
+        <div class=" num num3"><span>3</span></div>
+        <div class=" num num4"><span>4</span></div>
+        <div class=" num num5"><span>5</span></div>
+        <div class=" num  num6"><span>6</span></div>
+        <div class=" num num7"><span>7</span></div>
+        <div class= " num num8"><span>8</span></div>
+        <div class=" num  num9"><span>9</span></div>
+        <div class=" num num10"><span>10</span></div>
+        <div class=" num num11"><span>11</span></div>
+        <div class=" num um12"><span>12</span></div>
+<div class="sec"></div>
+<div class="min"></div>
+<div class="hr"></div>
+    </div>
+    <script>
+        let sechand=document.querySelector('.sec')
+        let minhand=document.querySelector('.min')
+        let hrhand=document.querySelector('.hr')
+
+
+        setInterval(update,1000)
+        function update(){
+            let da=new Date();
+        sechand.style.transform=`rotate(${da.getSeconds()*6}deg)`
+        minhand.style.transform=`rotate(${da.getMinutes()*6}deg)`
+        hrhand.style.transform=`rotate(${da.getHours()*30}deg)`
+        }
+    </script>
+</body>
+</html>

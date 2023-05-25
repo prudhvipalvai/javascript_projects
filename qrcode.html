@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            width: 400px;
+            height: 200px;
+            background-color: beige;
+            padding: 25px;
+            border-radius: 10px;
+            /* transition:  height 1s; */
+        }
+        .container h1{
+            font-size: larger;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .container .form input{
+            width: 100%;
+            height: 40px;
+            border: none;
+            outline: none;
+            margin-bottom: 10px;
+        }
+        #text{
+            padding: 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.6px;
+            border-radius: 10px;
+        }
+        #btns{
+            background-color: skyblue;
+            color: black;
+            letter-spacing: 1.6px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .qrcode{
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            border: 1px solid red;
+        }
+        #qr-image{
+            width:175px;
+        }
+        .container.active{
+        height: 560px;
+        }
+        .container.active .qrcode{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR CODE GENERATOR</h1>
+        <div class="form">
+            <input type="text" id="text" placeholder="Enter Your Name">
+            <input type="button" value="GENERATOR" id="btns">
+        </div>
+        <div class="qrcode">
+            <img src="" alt="" id="qr-image">
+        </div>
+    </div>
+
+
+    <script>
+        let container =document.querySelector('.container')
+        let texts=document.querySelector('#text')
+        let generatebutton=document.querySelector('#btns')
+        let images=document.querySelector('#qr-image')
+        let pre;
+
+        generatebutton.onclick=function(){
+            let input=texts.value.trim()
+            if(!input || input===pre){
+            return 
+            }
+            else{
+                pre=input;
+                generatebutton.innerText='GENERATOR QR CODE';
+                images.src=`https://api.qrserver.com/v1/create-qr-code/?size=175x175&data=${input}`
+                images.onload=function(){
+                    container.classList.add('active')
+                    generatebutton.innerText='GENERATOR';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

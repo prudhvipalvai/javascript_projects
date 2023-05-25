@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammer clody</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            box-sizing: border-box;
+        
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width: 70vw;
+            margin-top: 100px;
+            padding: 10px;
+        }
+        .container h1{
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: 1.3px;
+        }
+        .container p{
+         font-size: large;
+         text-transform: capitalize;
+         word-spacing: 1.7px;
+         letter-spacing: 1.1px;
+        }
+        textarea{
+            width: 100%;
+            height: 200px;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: larger;
+            letter-spacing: 1.4px;
+            resize: none;
+            position: relative;
+        }
+        textarea:focus{
+            outline: none;
+           
+        }
+        button{
+            padding: 10px 30px;
+            border: none;
+            font-size: larger;
+            border-radius: 10px;
+            letter-spacing: 1.3px;  
+            font-weight: bolder;
+            margin: auto;
+            display: block;
+            position: relative;
+            margin-top: -60px;
+            background-color: blueviolet;
+            color: whitesmoke;
+            cursor: pointer;
+        }
+        .container-text{
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Real Time Character Counter</h1>
+        <p>Check your english text for gramme,spelling and punctation errors with palvai prudvi real time char counter</p>
+        <textarea name="textarea" id="textarea" placeholder="Enter AnyThing" maxlength="200"></textarea>
+        <button onclick="copytext();">Generate</button>
+        <div class="container-text">
+            <p>Total Character : <span id="previousvalue">0</span></p>
+            <p>Remaining :<span id="nexttextvalue">200</span></p>
+        </div>
+    </div>
+
+
+
+    <script>
+        const charvalues=document.getElementById('textarea')
+        let previousvalue=document.getElementById('previousvalue')
+        let nexttextvalues=document.getElementById('nexttextvalue')
+
+        charvalues.addEventListener('keyup',()=>{
+            username=charvalues.value.length
+            previousvalue.innerText=username
+
+
+            nexttextvalues.innerText=200-username
+        })
+
+        function copytext(){
+            charvalues.select();
+            charvalues.setSelectionrange(1,9999);
+            navigator.clipboard.writeText(charvalues.value)
+        }
+    </script>
+</body>
+</html>
